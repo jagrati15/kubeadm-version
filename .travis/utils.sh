@@ -1,7 +1,7 @@
 #!/bin/bash
 # Get the current release version
 get_version() {
-    version=$(cat Gemfile | grep github_changelog_generator | awk -F "'" '{print $4}')
+    version=$(TRAVIS_BRANCH)
     echo "$version"
 }
 
@@ -28,10 +28,8 @@ docker_push (){
     if [ ! -z "${plat}" ] && [ ! -z "${version}" ]; then
         image="wise2c/kubeadm-version:manifest-${plat}-${version}"
         flag=""
-    elif [ ! -z "${version}" ]; then
+    else [ ! -z "${version}" ]; then
         image="wise2c/kubeadm-version:manifest-${version}"
-    else
-        image="wise2c/kubeadm-version:manifest-latest"
     fi
     echo "docker ${flag} push ${image}"
     docker ${flag} push ${image}
