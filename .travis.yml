@@ -9,11 +9,11 @@ jobs:
       arch: amd64
       env:
         - PLAT=amd64
-        - version=$(TRAVIS_BRANCH)
+        - version=$TRAVIS_BRANCH
     - arch: arm64
       env:
         - PLAT=arm64
-        - version=$(TRAVIS_BRANCH)
+        - version=$TRAVIS_BRANCH
     - stage: Creating multiarch manifest file
       script:
         - echo "Nothing to do during 'Script'"
