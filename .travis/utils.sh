@@ -30,6 +30,8 @@ docker_push (){
         flag=""
     else [ ! -z "${version}" ]; then
         image="wise2c/kubeadm-version:manifest-${version}"
+    else
+        image="wise2c/kubeadm-version:manifest-latest"
     fi
     echo "docker ${flag} push ${image}"
     docker ${flag} push ${image}
