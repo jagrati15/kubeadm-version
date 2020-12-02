@@ -1,7 +1,7 @@
 #!/bin/bash
 # Get the current release version
 get_version() {
-    version=$(TRAVIS_BRANCH)
+    version=$( TRAVIS_BRANCH )
     echo "$version"
 }
 
