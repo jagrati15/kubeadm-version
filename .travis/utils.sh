@@ -1,13 +1,14 @@
 #!/bin/bash
 # Get the current release version
-get_version() {
-    version=$(TRAVIS_BRANCH)
-    echo "$version"
-}
+#get_version() {
+#    version=$(TRAVIS_BRANCH)
+#    echo "$version"
+#}
 
 # Build and test docker images
 build_docker_image() {
-    version=$( get_version )
+    #version=$( get_version )
+    echo "$version"
     docker build -t ab1997/kubeadm-version:manifest-${PLAT}-${version} .
     docker run --rm -i ab1997/kubeadm-version:manifest-${PLAT}-${version}
 }
