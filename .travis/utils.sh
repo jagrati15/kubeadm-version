@@ -1,14 +1,13 @@
 #!/bin/bash
 # Get the current release version
-#get_version() {
-#    version=$(TRAVIS_BRANCH)
-#    echo "$version"
-#}
+get_version() {
+    version=$(TRAVIS_BRANCH)
+    echo "$version"
+}
 
 # Build and test docker images
 build_docker_image() {
-    #version=$( get_version )
-    echo "$version"
+    version=$( get_version )
     docker build -t ab1997/kubeadm-version:manifest-${PLAT}-${version} .
     docker run --rm --name=kubeadm-version ab1997/kubeadm-version:manifest-${PLAT}-${version} kubeadm config images list
 }
@@ -29,10 +28,8 @@ docker_push (){
     if [ ! -z "${plat}" ] && [ ! -z "${version}" ]; then
         image="ab1997/kubeadm-version:manifest-${plat}-${version}"
         flag=""
-    elif [ ! -z "${version}" ]; then
-        image="ab1997/kubeadm-version:manifest-${version}"
     else
-        image="ab1997/kubeadm-version:manifest-latest"
+        image="ab1997/kubeadm-version:manifest-${version}"
     fi
     echo "docker ${flag} push ${image}"
     docker ${flag} push ${image}
