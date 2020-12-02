@@ -28,7 +28,7 @@ docker_push (){
     if [ ! -z "${plat}" ] && [ ! -z "${version}" ]; then
         image="wise2c/kubeadm-version:manifest-${plat}-${version}"
         flag=""
-    else [ ! -z "${version}" ]; then
+    elif [ ! -z "${version}" ]; then
         image="wise2c/kubeadm-version:manifest-${version}"
     else
         image="wise2c/kubeadm-version:manifest-latest"
