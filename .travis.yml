@@ -7,9 +7,7 @@ jobs:
   include:
     - stage: Build and Publist Docker images
       arch: amd64
-      env:
-        - PLAT=amd64
-        - version=$TRAVIS_BRANCH
+      env: PLAT=amd64
     - arch: arm64
       env:
         - PLAT=arm64
