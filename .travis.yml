@@ -11,7 +11,6 @@ jobs:
     - arch: arm64
       env:
         - PLAT=arm64
-        - version=$TRAVIS_BRANCH
     - stage: Creating multiarch manifest file
       script:
         - echo "Nothing to do during 'Script'"
@@ -21,7 +20,6 @@ jobs:
           - bash .travis/create_push_multiarch_manifest.sh          
         on:
           branch: master
-          tags: true
 
 before_install:
   - source .travis/utils.sh
@@ -34,4 +32,3 @@ deploy:
   script: bash .travis/upload_docker_img.sh
   on:
     branch: master
-    tags: true
