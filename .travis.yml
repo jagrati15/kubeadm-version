@@ -16,8 +16,7 @@ jobs:
       deploy:
         provider: script
         script:
-          - bash .travis/create_push_multiarch_manifest.sh
-          
+          - bash .travis/create_push_multiarch_manifest.sh          
         on:
           branch: master
           tags: true
