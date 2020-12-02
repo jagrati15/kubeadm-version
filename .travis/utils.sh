@@ -10,7 +10,7 @@ build_docker_image() {
     #version=$( get_version )
     echo "$version"
     docker build -t ab1997/kubeadm-version:manifest-${PLAT}-${version} .
-    docker run --rm -i ab1997/kubeadm-version:manifest-${PLAT}-${version}
+    docker run --rm --name=kubeadm-version ab1997/kubeadm-version:manifest-${PLAT}-${version} kubeadm config images list
 }
 
 # Function usages: upload docker image/manifest
