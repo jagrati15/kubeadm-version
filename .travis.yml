@@ -7,7 +7,9 @@ jobs:
   include:
     - stage: Build and Publist Docker images
       arch: amd64
+      env: PLAT=amd64
     - arch: arm64
+      env: PLAT=arm64
     - stage: Creating multiarch manifest file
       script:
         - echo "Nothing to do during 'Script'"
