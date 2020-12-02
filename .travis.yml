@@ -17,7 +17,8 @@ jobs:
       deploy:
         provider: script
         script:
-          - bash .travis/create_push_multiarch_manifest.sh          
+          - bash .travis/create_push_multiarch_manifest.sh
+          - bash .travis/upload_docker_img.sh
         on:
           branch: master
 
@@ -27,8 +28,8 @@ before_install:
 script:
   - build_docker_image
 
-deploy:
-  provider: script
-  script: bash .travis/upload_docker_img.sh
-  on:
-    branch: master
+#deploy:
+#  provider: script
+#  script: bash .travis/upload_docker_img.sh
+#  on:
+#    branch: master
